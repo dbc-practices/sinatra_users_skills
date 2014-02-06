@@ -1,7 +1,7 @@
 get '/' do
   # render home page
   @users = User.all
-
+  @id = session[:user_id]
   erb :index
 end
 
@@ -56,3 +56,33 @@ post '/users' do
     erb :sign_up
   end
 end
+
+# ---------- SKILLS -----------
+
+get '/show_skill' do
+  @id = session[:user_id]
+  @user = User.find(@id)
+  @skills = @user.skills.to_a
+
+  # @user = User.find(session[:user_id])
+  erb :show_skill
+end
+
+get '/edit_skill/:prof_id' do
+  prof_id = params[:prof_id]
+  @prof = Proficiency.find(prof_id)
+  @user = User.find(Proficiency.find(prof_id).user_id)
+  @skill = Skill.find(Proficiency.find(prof_id).skill_id)
+  erb :edit_skill
+end
+
+post '/update_skill/:prof_id' do
+  puts params
+  prof_id = params[:prof_id]
+  prof = Proficiency.find(prof_id)
+  prof.year_exp = params[:year]
+  prof.trained = params[:trained]
+  prof.save
+  redirect to '/'
+end
+

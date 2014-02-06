@@ -19,3 +19,15 @@ design_skills.each do |skill|
 end
 
 # TODO: create associations between users and skills
+
+#seed proficiencies
+
+# User.all.each do |user|
+#   skill = Skill.all.sample
+#   year = (0..10).to_a.sample
+#   trained = [false, true].sample
+#   Proficiency.create( user: user,
+#                       skill: skill,
+#                       year_exp: year,
+#                       trained: trained)
+# end

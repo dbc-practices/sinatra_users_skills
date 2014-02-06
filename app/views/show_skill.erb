@@ -1,0 +1,13 @@
+<div class="container">
+
+  Edit skill for user <%=@user.name%><br><br>
+
+  Select skill to edit:<br><br>
+
+    <% @skills.each do |skill| %>
+      <% prof = @user.proficiencies.find_by(skill: skill) %>
+      <a href="<%= "/edit_skill/#{prof.id}" %>"><%= skill.name %></a><br>
+    <% end %>
+    <br>
+
+</div>

@@ -1,0 +1,10 @@
+<div class="container">
+
+  Edit <%= @skill.name %> skill for user <%= @user.name%> <br><br>
+
+  <form method="post" action="/update_skill/<%=@prof.id%>">
+    Year of Exp : <input type="text" name="year" value="<%=@prof.year_exp%>"/><br>
+    Formal trained? : <input type="text" name="trained" value="<%=@prof.trained%>"/><br><br>
+    <input type="submit" value="submit"/>
+  </form>
+</div>
